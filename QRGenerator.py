@@ -29,9 +29,10 @@ def qr_generation(message):
 
 @bot.message_handler(commands=["start"])
 def start_handler(message):
-    bot.send_message(message.chat.id, "<b>Добро пожаловать в QRBot</b>\nДля генерации QR-кода просто отправьте мне текст или ссылку", parse_mode="html")
+    bot.send_message(message.chat.id, "<b>Добро пожаловать в QRBot</b>\nДля генерации QR-кода просто отправьте мне текст или ссылку которую желаете преобразовать", parse_mode="html")
 
 def main() -> None:
     bot.infinity_polling()
 
 if __name__ == '__main__': main()
+
