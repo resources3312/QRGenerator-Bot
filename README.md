@@ -1,5 +1,5 @@
 # QRGenerator-Bot
-Simple bot for generation QRCodes based on input data. Uses Redis for contains data about user qrcode color, therefore requires Redis server for normal functioning
+Simple bot for generation QRCodes based on input data. Uses Redis for contains data about user qrcode color, therefore requires connection with **Redis-server** for normal functioning
 
 # Installing
 ```bash
