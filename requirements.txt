@@ -1,3 +1,4 @@
 dotenv
 telebot
+redis
 qrcode
