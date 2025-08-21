@@ -34,10 +34,28 @@ class UserRequestsArchive:
         except Error: pass
 
     @staticmethod
-    def getAllRequests() -> tuple[tuple] | None:
+    def getRequestsByUserId(user_id: int, index=0) -> tuple | None:
         try:
             with connect(getenv("SQLITE_URL")) as session:
-                requests = session.cursor().execute("SELECT received, user_id, username, qr_data FROM requests")
+                requests = session.cursor().execute(f"SELECT received, user_id, username, qr_data FROM requests WHERE user_id={user_id}").fetchall()
+                return requests if requests else None
+
+        except Error: None
+
+    @staticmethod
+    def getRequestsByUsername(username: str, index=0) -> tuple | None:
+        try:
+            with connect(getenv("SQLITE_URL")) as session:
+                requests = session.cursor().execute(f"SELECT received, user_id, username, qr_data FROM requests WHERE username={username}").fetchall()
+                return requests if requests else None
+
+        except Error: None
+
+     @staticmethod
+    def getUsersList() -> tuple[tuple] | None:
+        try:
+            with connect(getenv("SQLITE_URL")) as session:
+                requests = session.cursor().execute(f"SELECT received, user_id, username FROM requests").fetchall()
                 return requests if requests else None
 
         except Error: None
@@ -71,5 +89,6 @@ class QRManager:
 
         byte_qr.seek(0)
         return byte_qr
+
 
 
